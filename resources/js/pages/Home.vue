@@ -19,6 +19,17 @@ const props = defineProps({
     },
 });
 
+const featuredOrder = [
+    'Laravel', 'Vue.js', 'Inertia', 'PHP', 'Tailwind CSS', 'MySQL', 'Docker',
+    'REST API', 'GitHub', 'Nginx', 'PM2', 'Hostinger', 'Cloudflare',
+    'Asaas', 'PayPal', 'Pagar.me',
+    'API do WhatsApp', 'API da Meta', 'Google Auth', 'NF-e', 'OneSignal', 'Google Play e App Store',
+];
+
+const featuredSkills = computed(() => featuredOrder
+    .map((name) => props.skills.find((skill) => skill.name === name && skill.featured))
+    .filter(Boolean));
+
 const skillGroups = computed(() => {
     const groups = [];
 
@@ -149,28 +160,50 @@ const familyName = computed(() => props.profile.name.split(' ').slice(1).join(' 
     <section id="capacidades" class="scroll-mt-24 border-t border-line">
         <div class="mx-auto max-w-5xl px-6 py-16 md:py-20">
             <p class="text-sm font-medium tracking-[0.22em] text-accent uppercase">Capacidades</p>
-            <h2 class="mt-3 font-serif text-5xl tracking-tight md:text-6xl">Com o que eu trabalho</h2>
+            <h2 class="mt-3 font-serif text-5xl tracking-tight md:text-6xl">Com o que eu trabalho ou já trabalhei</h2>
+            <p class="mt-4 max-w-xl text-muted">
+                PHP e Laravel no centro, com Vue.js na interface. O restante entra conforme o projeto pede.
+            </p>
 
             <p v-if="skillGroups.length === 0" class="mt-10 text-muted">
                 Nenhuma capacidade cadastrada ainda.
             </p>
 
-            <div v-else class="mt-10 grid gap-10 sm:grid-cols-2 xl:grid-cols-4">
-                <article v-for="group in skillGroups" :key="group.category">
-                    <h3 class="text-sm font-medium tracking-[0.16em] text-muted uppercase">
-                        {{ group.category }}
-                    </h3>
-                    <ul class="mt-4 flex flex-wrap gap-2">
-                        <li
-                            v-for="skill in group.skills"
-                            :key="skill.id"
-                            class="rounded-full bg-white/5 px-3 py-1.5 text-sm ring-1 ring-white/10"
-                        >
-                            {{ skill.name }}
-                        </li>
-                    </ul>
-                </article>
-            </div>
+            <template v-else>
+                <ul class="mt-8 flex flex-wrap gap-3">
+                    <li
+                        v-for="skill in featuredSkills"
+                        :key="skill.id"
+                        class="rounded-full bg-accent px-4 py-2 text-base font-medium text-paper"
+                    >
+                        {{ skill.name }}
+                    </li>
+                </ul>
+
+                <div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    <article
+                        v-for="group in skillGroups"
+                        :key="group.category"
+                        class="rounded-3xl border border-line bg-white/[0.03] p-6"
+                    >
+                        <h3 class="text-sm font-medium tracking-[0.16em] text-muted uppercase">
+                            {{ group.category }}
+                        </h3>
+                        <ul class="mt-4 flex flex-wrap gap-2">
+                            <li
+                                v-for="skill in group.skills"
+                                :key="skill.id"
+                                class="rounded-full px-3 py-1.5 text-sm"
+                                :class="skill.featured
+                                    ? 'bg-accent font-medium text-paper'
+                                    : 'bg-white/5 ring-1 ring-white/10'"
+                            >
+                                {{ skill.name }}
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </template>
         </div>
     </section>
 

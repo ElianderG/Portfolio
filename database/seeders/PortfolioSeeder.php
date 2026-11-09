@@ -70,46 +70,36 @@ class PortfolioSeeder extends Seeder
         }
 
         $skills = [
-            ['name' => 'PHP', 'category' => 'Backend', 'sort_order' => 1],
-            ['name' => 'Laravel', 'category' => 'Backend', 'sort_order' => 2],
-            ['name' => 'Node.js', 'category' => 'Backend', 'sort_order' => 3],
-            ['name' => 'JavaScript', 'category' => 'Backend', 'sort_order' => 4],
-            ['name' => 'Python', 'category' => 'Backend', 'sort_order' => 5],
-            ['name' => 'Vue.js', 'category' => 'Frontend', 'sort_order' => 6],
-            ['name' => 'Inertia', 'category' => 'Frontend', 'sort_order' => 7],
-            ['name' => 'React', 'category' => 'Frontend', 'sort_order' => 8],
-            ['name' => 'Next.js', 'category' => 'Frontend', 'sort_order' => 9],
-            ['name' => 'React Native', 'category' => 'Frontend', 'sort_order' => 10],
-            ['name' => 'Flutter', 'category' => 'Frontend', 'sort_order' => 11],
-            ['name' => 'TypeScript', 'category' => 'Frontend', 'sort_order' => 12],
-            ['name' => 'Alpine.js', 'category' => 'Frontend', 'sort_order' => 13],
-            ['name' => 'Livewire', 'category' => 'Frontend', 'sort_order' => 14],
-            ['name' => 'Tailwind CSS', 'category' => 'Frontend', 'sort_order' => 15],
-            ['name' => 'WordPress', 'category' => 'Frontend', 'sort_order' => 16],
-            ['name' => 'MySQL', 'category' => 'Dados', 'sort_order' => 17],
-            ['name' => 'PostgreSQL', 'category' => 'Dados', 'sort_order' => 18],
-            ['name' => 'Redis', 'category' => 'Dados', 'sort_order' => 19],
-            ['name' => 'Prisma', 'category' => 'Dados', 'sort_order' => 20],
-            ['name' => 'Git', 'category' => 'Infra e deploy', 'sort_order' => 21],
-            ['name' => 'GitHub', 'category' => 'Infra e deploy', 'sort_order' => 22],
-            ['name' => 'GitHub Actions', 'category' => 'Infra e deploy', 'sort_order' => 23],
-            ['name' => 'Docker', 'category' => 'Infra e deploy', 'sort_order' => 24],
-            ['name' => 'Linux', 'category' => 'Infra e deploy', 'sort_order' => 25],
-            ['name' => 'Nginx', 'category' => 'Infra e deploy', 'sort_order' => 26],
-            ['name' => 'PM2', 'category' => 'Infra e deploy', 'sort_order' => 27],
-            ['name' => 'Hostinger', 'category' => 'Infra e deploy', 'sort_order' => 28],
-            ['name' => 'Cloudflare', 'category' => 'Infra e deploy', 'sort_order' => 29],
+            'Backend' => ['PHP', 'Laravel', 'REST API', 'Node.js', 'JavaScript', 'Python', 'Filas e workers', 'WebSockets'],
+            'Frontend' => ['Vue.js', 'Inertia', 'React', 'Next.js', 'React Native', 'Flutter', 'TypeScript', 'Alpine.js', 'Livewire', 'Tailwind CSS', 'WordPress', 'WooCommerce', 'Elementor'],
+            'Dados' => ['MySQL', 'PostgreSQL', 'Redis', 'Prisma', 'Meilisearch'],
+            'Infra e deploy' => ['Git', 'GitHub', 'GitHub Actions', 'Docker', 'Linux', 'Nginx', 'PM2', 'Supervisor', "Let's Encrypt", 'phpMyAdmin', 'Hostinger', 'KingHost', 'CloudPanel', 'Vercel', 'Cloudflare', 'Registro.br'],
+            'Pagamentos' => ['Asaas', 'Pix', 'Mercado Pago', 'Pagar.me', 'Stripe', 'PayPal', 'Cielo'],
+            'Integrações' => ['API do WhatsApp', 'API da Meta', 'Google Analytics', 'Google Auth', 'OpenAI', 'Gemini', 'Ollama', 'Conta Azul', 'NF-e', 'Resend', 'E-mail SMTP', 'OneSignal', 'Playwright', 'Google Play e App Store'],
         ];
 
+        $featured = [
+            'PHP', 'Laravel', 'Vue.js', 'Inertia', 'Tailwind CSS', 'MySQL', 'Docker',
+            'REST API', 'GitHub', 'Nginx', 'PM2', 'Hostinger', 'Cloudflare',
+            'Asaas', 'PayPal', 'Pagar.me',
+            'API do WhatsApp', 'API da Meta', 'Google Auth', 'NF-e', 'OneSignal', 'Google Play e App Store',
+        ];
+
+        $names = array_merge(...array_values($skills));
+
         Skill::query()
-            ->whereNotIn('name', array_column($skills, 'name'))
+            ->whereNotIn('name', $names)
             ->delete();
 
-        foreach ($skills as $skill) {
-            Skill::query()->updateOrCreate(
-                ['name' => $skill['name']],
-                $skill,
-            );
+        $order = 0;
+
+        foreach ($skills as $category => $items) {
+            foreach ($items as $name) {
+                Skill::query()->updateOrCreate(
+                    ['name' => $name],
+                    ['category' => $category, 'featured' => in_array($name, $featured, true), 'sort_order' => ++$order],
+                );
+            }
         }
     }
 }

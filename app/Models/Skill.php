@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable(['name', 'category', 'sort_order'])]
+#[Fillable(['name', 'category', 'featured', 'sort_order'])]
 class Skill extends Model
 {
     /** @use HasFactory<SkillFactory> */
@@ -19,6 +19,7 @@ class Skill extends Model
     protected function casts(): array
     {
         return [
+            'featured' => 'boolean',
             'sort_order' => 'integer',
         ];
     }
