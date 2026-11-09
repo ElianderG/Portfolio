@@ -7,16 +7,21 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-serif: 'Instrument Serif', ui-serif, Georgia, 'Times New Roman', serif;
-    --color-paper: #f3efe6;
-    --color-ink: #1c1915;
-    --color-muted: #5e584f;
-    --color-line: #ddd4c4;
-    --color-accent: #b8501f;
+    --color-paper: #000014;
+    --color-ink: #f4f7ff;
+    --color-muted: #b7c0d9;
+    --color-line: #243056;
+    --color-accent: #9eb6ff;
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(900px 420px at 18% -8%, #0000a0 0%, transparent 58%),
+        linear-gradient(180deg, #000072 0%, #000024 28%, #000010 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -26,6 +31,6 @@ html {
 }
 
 ::selection {
-    background: var(--color-accent);
-    color: var(--color-paper);
+    background: #9eb6ff;
+    color: #000014;
 }

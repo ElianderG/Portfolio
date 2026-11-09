@@ -6,7 +6,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <x-inertia::head />
     </head>
-    <body class="bg-paper font-sans text-ink antialiased">
+    <body class="font-sans text-ink antialiased">
         <x-inertia::app />
     </body>
 </html>

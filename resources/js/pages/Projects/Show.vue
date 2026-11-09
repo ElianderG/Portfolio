@@ -19,7 +19,7 @@ defineProps({
             ← Projetos
         </Link>
 
-        <h1 class="mt-8 font-serif text-5xl tracking-tight md:text-6xl">
+        <h1 class="mt-8 text-5xl tracking-tight md:text-6xl">
             {{ project.title }}
         </h1>
         <p class="mt-6 text-lg leading-relaxed text-muted">

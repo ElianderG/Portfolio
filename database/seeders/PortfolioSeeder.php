@@ -34,6 +34,16 @@ class PortfolioSeeder extends Seeder
                 'stack' => ['Laravel', 'Blade', 'Alpine.js', 'Tailwind CSS', 'MySQL'],
                 'sort_order' => 2,
             ],
+            [
+                'title' => 'Tropa do Metal',
+                'slug' => 'tropa-do-metal',
+                'summary' => 'Site de cadastro para um evento musical fictício, feito no seminário da faculdade.',
+                'description' => "O trabalho cobre o cadastro de participantes, login da administração, alteração e exclusão de registros, e a listagem de quem se inscreveu.\n\nFoi construído com PHP, HTML, CSS, JavaScript e MySQL.",
+                'url' => null,
+                'repository_url' => 'https://github.com/ElianderG/Projeto-Semin-rio-Tropa-do-Metal',
+                'stack' => ['PHP', 'JavaScript', 'MySQL'],
+                'sort_order' => 3,
+            ],
         ];
 
         foreach ($projects as $project) {
@@ -46,14 +56,23 @@ class PortfolioSeeder extends Seeder
         $skills = [
             ['name' => 'PHP', 'category' => 'Backend', 'sort_order' => 1],
             ['name' => 'Laravel', 'category' => 'Backend', 'sort_order' => 2],
-            ['name' => 'Vue.js', 'category' => 'Frontend', 'sort_order' => 3],
-            ['name' => 'Inertia', 'category' => 'Frontend', 'sort_order' => 4],
-            ['name' => 'Blade', 'category' => 'Frontend', 'sort_order' => 5],
-            ['name' => 'Alpine.js', 'category' => 'Frontend', 'sort_order' => 6],
-            ['name' => 'Tailwind CSS', 'category' => 'Frontend', 'sort_order' => 7],
-            ['name' => 'MySQL', 'category' => 'Dados', 'sort_order' => 8],
-            ['name' => 'SQLite', 'category' => 'Dados', 'sort_order' => 9],
+            ['name' => 'Node.js', 'category' => 'Backend', 'sort_order' => 3],
+            ['name' => 'JavaScript', 'category' => 'Backend', 'sort_order' => 4],
+            ['name' => 'Vue.js', 'category' => 'Frontend', 'sort_order' => 5],
+            ['name' => 'Inertia', 'category' => 'Frontend', 'sort_order' => 6],
+            ['name' => 'React', 'category' => 'Frontend', 'sort_order' => 7],
+            ['name' => 'Next.js', 'category' => 'Frontend', 'sort_order' => 8],
+            ['name' => 'TypeScript', 'category' => 'Frontend', 'sort_order' => 9],
+            ['name' => 'Tailwind CSS', 'category' => 'Frontend', 'sort_order' => 10],
+            ['name' => 'MySQL', 'category' => 'Dados', 'sort_order' => 11],
+            ['name' => 'PostgreSQL', 'category' => 'Dados', 'sort_order' => 12],
+            ['name' => 'Docker', 'category' => 'Infra', 'sort_order' => 13],
+            ['name' => 'Linux', 'category' => 'Infra', 'sort_order' => 14],
         ];
+
+        Skill::query()
+            ->whereNotIn('name', array_column($skills, 'name'))
+            ->delete();
 
         foreach ($skills as $skill) {
             Skill::query()->updateOrCreate(

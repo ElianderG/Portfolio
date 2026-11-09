@@ -34,7 +34,7 @@ class PortfolioTest extends TestCase
             ->assertOk()
             ->assertInertia(fn (Assert $page) => $page
                 ->component('Home')
-                ->where('profile.name', 'Eliander')
+                ->where('profile.name', 'Eliander Gomes')
                 ->has('projects', 2)
                 ->where('projects.0.title', 'Primeiro')
                 ->where('projects.0.href', route('projects.show', 'primeiro'))

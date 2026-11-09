@@ -15,11 +15,6 @@ export default defineConfig({
                     weights: [400, 500, 600, 700],
                     optimizedFallbacks: false,
                 }),
-                bunny('Instrument Serif', {
-                    weights: [400],
-                    styles: ['normal', 'italic'],
-                    optimizedFallbacks: false,
-                }),
             ],
         }),
         inertia({ ssr: false }),

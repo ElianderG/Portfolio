@@ -8,6 +8,6 @@ createInertiaApp({
     layout: () => Layout,
     title: (title) => (title ? `${title} — ${appName}` : appName),
     progress: {
-        color: '#b8501f',
+        color: '#9eb6ff',
     },
 });

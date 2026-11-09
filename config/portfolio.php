@@ -12,12 +12,20 @@ return [
     |
     */
 
-    'name' => 'Eliander',
+    'name' => 'Eliander Gomes',
 
-    'role' => 'Desenvolvedor web',
+    'role' => 'Desenvolvedor full stack',
 
-    'summary' => 'Construo produtos web com Laravel, do banco até a interface. Prefiro um fluxo claro e um código simples de manter.',
+    'location' => 'Curvelo, Minas Gerais',
+
+    'education' => 'Análise e Desenvolvimento de Sistemas · UNIASSELVI',
+
+    'summary' => 'Construo e mantenho aplicações web com PHP e Laravel, da interface ao banco e à publicação. Também trabalho com React, Node.js, MySQL e Docker, em sistemas, sites e landing pages.',
 
     'email' => 'eliandergomes@gmail.com',
+
+    'linkedin' => 'https://www.linkedin.com/in/eliander-gomes-da-silveira-a1a957161',
+
+    'github' => 'https://github.com/ElianderG',
 
 ];
