@@ -1,11 +1,24 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
+import { computed } from 'vue';
 
-defineProps({
+const props = defineProps({
     project: {
         type: Object,
         required: true,
     },
+});
+
+const shots = computed(() => {
+    if (props.project.images?.length) {
+        return props.project.images;
+    }
+
+    if (props.project.image) {
+        return [{ src: props.project.image, alt: `Tela inicial de ${props.project.title}` }];
+    }
+
+    return [];
 });
 </script>
 
@@ -25,6 +38,19 @@ defineProps({
         <p class="mt-6 text-lg leading-relaxed text-muted">
             {{ project.summary }}
         </p>
+
+        <div v-if="shots.length" class="mt-8 grid gap-6">
+            <figure v-for="shot in shots" :key="shot.src">
+                <img
+                    :src="shot.src"
+                    :alt="shot.alt"
+                    class="w-full rounded-3xl ring-1 ring-white/10"
+                >
+                <figcaption v-if="shots.length > 1" class="mt-2 text-sm text-muted">
+                    {{ shot.alt }}
+                </figcaption>
+            </figure>
+        </div>
 
         <ul v-if="project.stack.length" class="mt-8 flex flex-wrap gap-2">
             <li

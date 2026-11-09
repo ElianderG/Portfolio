@@ -20,6 +20,8 @@ class ProjectResource extends JsonResource
             'description' => $this->description,
             'url' => $this->url,
             'repository_url' => $this->repository_url,
+            'image' => $this->image,
+            'images' => $this->images ?? [],
             'stack' => $this->stack ?? [],
             'href' => route('projects.show', $this->slug),
         ];

@@ -96,21 +96,24 @@ const familyName = computed(() => props.profile.name.split(' ').slice(1).join(' 
 
             <div v-else class="mt-10 grid gap-4">
                 <Link
-                    v-for="(project, index) in projects"
+                    v-for="project in projects"
                     :key="project.id"
                     :href="project.href"
                     class="group rounded-3xl border border-line bg-white/[0.03] p-6 transition hover:border-accent/50 hover:bg-white/[0.06] md:p-8"
                 >
-                    <span class="flex items-center justify-between gap-4 text-sm">
-                        <span class="font-serif text-lg text-accent">
-                            {{ String(index + 1).padStart(2, '0') }}
+                    <span class="flex items-start justify-between gap-4">
+                        <span class="block font-serif text-3xl tracking-tight md:text-4xl">
+                            {{ project.title }}
                         </span>
-                        <span class="text-muted transition group-hover:text-accent">Ver projeto</span>
+                        <span class="text-sm text-muted transition group-hover:text-accent">Ver projeto</span>
                     </span>
-                    <span class="mt-4 block font-serif text-3xl tracking-tight md:text-4xl">
-                        {{ project.title }}
-                    </span>
-                    <span class="mt-3 block max-w-2xl leading-relaxed text-muted">
+                    <img
+                        v-if="project.image"
+                        :src="project.image"
+                        :alt="`Tela inicial de ${project.title}`"
+                        class="mt-6 w-full rounded-2xl ring-1 ring-white/10"
+                    >
+                    <span class="mt-6 block max-w-2xl leading-relaxed text-muted">
                         {{ project.summary }}
                     </span>
                     <span v-if="project.stack.length" class="mt-5 flex flex-wrap gap-2">

@@ -19,8 +19,10 @@ class PortfolioSeeder extends Seeder
                 'slug' => 'petcomcarinho',
                 'summary' => 'Marketplace de animais em que ONGs publicam adoção sem custo e criadores ou lojas vendem pagando um percentual.',
                 'description' => "ONGs publicam animais para adoção sem custo. Canis, criadouros e lojas anunciam animais ou artigos e pagam um percentual da venda.\n\nO produto está em Laravel 13, com a interface em Vue 3 e Inertia, autenticação por sessão e MySQL.",
-                'url' => null,
-                'repository_url' => null,
+                'url' => 'https://petcomcarinho.paralells.com.br/',
+                'repository_url' => 'https://github.com/ElianderG/CutnessCare',
+                'image' => '/projects/petcomcarinho.jpg',
+                'images' => null,
                 'stack' => ['Laravel', 'Vue.js', 'Inertia', 'Tailwind CSS', 'MySQL'],
                 'sort_order' => 1,
             ],
@@ -31,20 +33,31 @@ class PortfolioSeeder extends Seeder
                 'description' => "A partida coloca você como moderador: cuida do chat, apoia a streamer e tenta fazer o canal crescer sem descuidar da saúde e da reputação.\n\nA base está em Laravel 13. A interface usa Blade, Alpine.js e uma shell de desktop com janelas e barra de tarefas.",
                 'url' => null,
                 'repository_url' => null,
+                'image' => '/projects/glowing-star-inicial.jpg',
+                'images' => [
+                    ['src' => '/projects/glowing-star-inicial.jpg', 'alt' => 'Tela inicial do Glowing Star'],
+                    ['src' => '/projects/glowing-star-jogo.jpg', 'alt' => 'Tela de jogo do Glowing Star'],
+                ],
                 'stack' => ['Laravel', 'Blade', 'Alpine.js', 'Tailwind CSS', 'MySQL'],
                 'sort_order' => 2,
             ],
             [
-                'title' => 'Tropa do Metal',
-                'slug' => 'tropa-do-metal',
-                'summary' => 'Site de cadastro para um evento musical fictício, feito no seminário da faculdade.',
-                'description' => "O trabalho cobre o cadastro de participantes, login da administração, alteração e exclusão de registros, e a listagem de quem se inscreveu.\n\nFoi construído com PHP, HTML, CSS, JavaScript e MySQL.",
+                'title' => 'My Modular Deity',
+                'slug' => 'my-modular-deity',
+                'summary' => 'Companheiro de desktop sobre o Miku Miku Dance: a pessoa traz modelo, dança, pose e acessório, e o personagem conversa e escolhe um gesto dessa lista.',
+                'description' => "O Miku Miku Dance continua sendo o lugar de criar. Este programa é o lugar de usar o que a comunidade já fez. O configurador recebe modelo, movimento, pose e acessório. O personagem fica solto na área de trabalho, com fundo transparente, e escolhe o que fazer a partir dos arquivos enviados.\n\nO aplicativo é em Python. O corpo 3D é desenhado em OpenGL, pela biblioteca saba, numa janela nativa. O configurador abre numa página em WebView2. A conversa pode ser local, no Gemini ou no Ollama. Se o gesto não está na lista, o corpo não inventa um.",
                 'url' => null,
-                'repository_url' => 'https://github.com/ElianderG/Projeto-Semin-rio-Tropa-do-Metal',
-                'stack' => ['PHP', 'JavaScript', 'MySQL'],
+                'repository_url' => 'https://github.com/ElianderG/MyModularDeity',
+                'image' => null,
+                'images' => null,
+                'stack' => ['Python', 'OpenGL', 'WebView2', 'Gemini', 'Ollama'],
                 'sort_order' => 3,
             ],
         ];
+
+        Project::query()
+            ->whereNotIn('slug', array_column($projects, 'slug'))
+            ->delete();
 
         foreach ($projects as $project) {
             Project::query()->updateOrCreate(
