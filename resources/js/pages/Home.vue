@@ -38,13 +38,13 @@ const skillGroups = computed(() => {
 
 const projectGroups = computed(() => [
     {
-        title: 'Projetos profissionais',
-        description: 'Sistemas, sites e experiências que eu construí do início ao fim.',
+        title: 'Profissionais',
+        description: 'Marketplaces, SaaS e ferramentas de produtividade.',
         projects: props.projects.filter((project) => project.category === 'profissional'),
     },
     {
-        title: 'Projetos de entretenimento',
-        description: 'Projetos que eu construí para me divertir e para me desafiar.',
+        title: 'Entretenimento',
+        description: 'Jogos e experimentos que eu construí para me divertir e me desafiar.',
         projects: props.projects.filter((project) => project.category === 'entretenimento'),
     },
 ]);
@@ -55,7 +55,7 @@ const familyName = computed(() => props.profile.name.split(' ').slice(1).join(' 
 
 <template>
     <Head>
-        <meta head-key="description" name="description" :content="profile.summary">
+        <meta head-key="description" name="description" :content="profile.description">
     </Head>
 
     <section class="mx-auto grid max-w-5xl items-center gap-10 px-6 py-14 md:grid-cols-[16.5rem_1fr] md:gap-14 md:py-20">
@@ -78,36 +78,38 @@ const familyName = computed(() => props.profile.name.split(' ').slice(1).join(' 
             <p class="mt-4 text-sm leading-relaxed text-muted">
                 {{ profile.location }} · {{ profile.education }}
             </p>
-            <div class="mt-8 flex gap-8">
-                <p>
-                    <span class="block font-serif text-3xl">{{ projects.length }}</span>
-                    <span class="text-sm text-muted">{{ projects.length === 1 ? 'projeto' : 'projetos' }}</span>
-                </p>
-                <p>
-                    <span class="block font-serif text-3xl">{{ skills.length }}</span>
-                    <span class="text-sm text-muted">{{ skills.length === 1 ? 'capacidade' : 'capacidades' }}</span>
-                </p>
+            <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+                <a
+                    class="inline-flex items-center gap-3 rounded-full bg-accent px-5 py-3 font-medium text-paper transition hover:bg-ink"
+                    href="#contato"
+                >
+                    <SocialIcon name="mail" />
+                    Falar de um projeto
+                </a>
+                <a
+                    class="text-sm font-medium underline decoration-line underline-offset-4 hover:text-accent hover:decoration-accent"
+                    href="#trabalho"
+                >
+                    Ver projetos
+                </a>
             </div>
-            <a
-                class="mt-8 inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent"
-                href="#contato"
-            >
-                Falar de um projeto
-            </a>
         </div>
     </section>
 
     <section id="trabalho" class="scroll-mt-24 border-t border-line">
         <div class="mx-auto max-w-5xl px-6 py-16 md:py-20">
-            <div v-for="(group, index) in projectGroups" :key="group.title" :class="index === 0 ? '' : 'mt-16'">
-                <h2 class="font-serif text-5xl tracking-tight md:text-6xl">{{ group.title }}</h2>
-                <p class="mt-4 max-w-xl text-muted">{{ group.description }}</p>
+            <p class="text-sm font-medium tracking-[0.22em] text-accent uppercase">Trabalho</p>
+            <h2 class="mt-3 font-serif text-5xl tracking-tight md:text-6xl">Projetos</h2>
 
-                <p v-if="group.projects.length === 0" class="mt-10 text-muted">
+            <div v-for="group in projectGroups" :key="group.title" class="mt-14">
+                <h3 class="font-serif text-3xl tracking-tight md:text-4xl">{{ group.title }}</h3>
+                <p class="mt-2 max-w-xl text-muted">{{ group.description }}</p>
+
+                <p v-if="group.projects.length === 0" class="mt-6 text-muted">
                     Nenhum projeto publicado ainda.
                 </p>
 
-                <div v-else class="mt-10 grid gap-4">
+                <div v-else class="mt-6 grid gap-4">
                     <Link
                         v-for="project in group.projects"
                         :key="project.id"
@@ -115,7 +117,7 @@ const familyName = computed(() => props.profile.name.split(' ').slice(1).join(' 
                         class="group rounded-3xl border border-line bg-white/[0.03] p-6 transition hover:border-accent/50 hover:bg-white/[0.06] md:p-8"
                     >
                         <span class="flex items-start justify-between gap-4">
-                            <span class="block font-serif text-3xl tracking-tight md:text-4xl">
+                            <span class="block text-2xl font-semibold tracking-tight md:text-3xl">
                                 {{ project.title }}
                             </span>
                             <span class="text-sm text-muted transition group-hover:text-accent">Ver projeto</span>

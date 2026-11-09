@@ -90,8 +90,15 @@ class PortfolioSeeder extends Seeder
             ['name' => 'PostgreSQL', 'category' => 'Dados', 'sort_order' => 18],
             ['name' => 'Redis', 'category' => 'Dados', 'sort_order' => 19],
             ['name' => 'Prisma', 'category' => 'Dados', 'sort_order' => 20],
-            ['name' => 'Docker', 'category' => 'Infra', 'sort_order' => 21],
-            ['name' => 'Linux', 'category' => 'Infra', 'sort_order' => 22],
+            ['name' => 'Git', 'category' => 'Infra e deploy', 'sort_order' => 21],
+            ['name' => 'GitHub', 'category' => 'Infra e deploy', 'sort_order' => 22],
+            ['name' => 'GitHub Actions', 'category' => 'Infra e deploy', 'sort_order' => 23],
+            ['name' => 'Docker', 'category' => 'Infra e deploy', 'sort_order' => 24],
+            ['name' => 'Linux', 'category' => 'Infra e deploy', 'sort_order' => 25],
+            ['name' => 'Nginx', 'category' => 'Infra e deploy', 'sort_order' => 26],
+            ['name' => 'PM2', 'category' => 'Infra e deploy', 'sort_order' => 27],
+            ['name' => 'Hostinger', 'category' => 'Infra e deploy', 'sort_order' => 28],
+            ['name' => 'Cloudflare', 'category' => 'Infra e deploy', 'sort_order' => 29],
         ];
 
         Skill::query()

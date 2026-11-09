@@ -16,11 +16,13 @@ return [
 
     'role' => 'Desenvolvedor full stack',
 
-    'location' => 'Curvelo, Minas Gerais',
+    'location' => 'Curvelo, Minas Gerais · trabalho remoto',
 
     'education' => 'Análise e Desenvolvimento de Sistemas · UNIASSELVI',
 
-    'summary' => 'Desenvolvo aplicações web do início ao fim, da interface ao banco de dados e à publicação, com PHP e Laravel, além de React, Node.js, MySQL e Docker. Os projetos daqui são só uma parte do meu trabalho: também atuei em sistemas empresariais de alta carga e demanda, e em projetos confidenciais que não posso mostrar por direitos autorais.',
+    'summary' => 'Desenvolvo aplicações web completas, da interface ao banco de dados e ao deploy, com PHP e Laravel no centro. O que está aqui é uma amostra: também trabalhei em sistemas empresariais de alta carga e em projetos sob confidencialidade, que não posso mostrar.',
+
+    'description' => 'Desenvolvedor full stack em PHP e Laravel. Aplicações web completas, da interface ao deploy.',
 
     'email' => 'eliandergomes@gmail.com',
 
