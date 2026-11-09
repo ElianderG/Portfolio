@@ -20,7 +20,7 @@ return [
 
     'education' => 'Análise e Desenvolvimento de Sistemas · UNIASSELVI',
 
-    'summary' => 'Construo e mantenho aplicações web com PHP e Laravel, da interface ao banco e à publicação. Também trabalho com React, Node.js, MySQL e Docker, em sistemas, sites e landing pages.',
+    'summary' => 'Desenvolvo aplicações web do início ao fim, da interface ao banco de dados e à publicação, com PHP e Laravel, além de React, Node.js, MySQL e Docker. Os projetos daqui são só uma parte do meu trabalho: também atuei em sistemas empresariais de alta carga e demanda, e em projetos confidenciais que não posso mostrar por direitos autorais.',
 
     'email' => 'eliandergomes@gmail.com',
 

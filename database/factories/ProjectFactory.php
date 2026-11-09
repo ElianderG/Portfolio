@@ -18,6 +18,7 @@ class ProjectFactory extends Factory
         return [
             'title' => fake()->sentence(3),
             'slug' => fake()->unique()->slug(3),
+            'category' => 'profissional',
             'summary' => fake()->sentence(),
             'description' => fake()->paragraph(),
             'url' => null,

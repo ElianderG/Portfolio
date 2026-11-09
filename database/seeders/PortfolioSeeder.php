@@ -17,6 +17,7 @@ class PortfolioSeeder extends Seeder
             [
                 'title' => 'PetComCarinho',
                 'slug' => 'petcomcarinho',
+                'category' => 'profissional',
                 'summary' => 'Marketplace de animais em que ONGs publicam adoção sem custo e criadores ou lojas vendem pagando um percentual.',
                 'description' => "ONGs publicam animais para adoção sem custo. Canis, criadouros e lojas anunciam animais ou artigos e pagam um percentual da venda.\n\nO produto está em Laravel 13, com a interface em Vue 3 e Inertia, autenticação por sessão e MySQL.",
                 'url' => 'https://petcomcarinho.paralells.com.br/',
@@ -29,6 +30,7 @@ class PortfolioSeeder extends Seeder
             [
                 'title' => 'Glowing Star',
                 'slug' => 'glowing-star',
+                'category' => 'entretenimento',
                 'summary' => 'Jogo de texto no navegador em que você modera um canal de streaming e equilibra engajamento, saúde e reputação.',
                 'description' => "A partida coloca você como moderador: cuida do chat, apoia a streamer e tenta fazer o canal crescer sem descuidar da saúde e da reputação.\n\nA base está em Laravel 13. A interface usa Blade, Alpine.js e uma shell de desktop com janelas e barra de tarefas.",
                 'url' => null,
@@ -44,6 +46,7 @@ class PortfolioSeeder extends Seeder
             [
                 'title' => 'My Modular Deity',
                 'slug' => 'my-modular-deity',
+                'category' => 'entretenimento',
                 'summary' => 'Companheiro de desktop sobre o Miku Miku Dance: a pessoa traz modelo, dança, pose e acessório, e o personagem conversa e escolhe um gesto dessa lista.',
                 'description' => "O Miku Miku Dance continua sendo o lugar de criar. Este programa é o lugar de usar o que a comunidade já fez. O configurador recebe modelo, movimento, pose e acessório. O personagem fica solto na área de trabalho, com fundo transparente, e escolhe o que fazer a partir dos arquivos enviados.\n\nO aplicativo é em Python. O corpo 3D é desenhado em OpenGL, pela biblioteca saba, numa janela nativa. O configurador abre numa página em WebView2. A conversa pode ser local, no Gemini ou no Ollama. Se o gesto não está na lista, o corpo não inventa um.",
                 'url' => null,

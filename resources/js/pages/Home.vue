@@ -36,6 +36,19 @@ const skillGroups = computed(() => {
     return groups;
 });
 
+const projectGroups = computed(() => [
+    {
+        title: 'Projetos profissionais',
+        description: 'Sistemas, sites e experiências que eu construí do início ao fim.',
+        projects: props.projects.filter((project) => project.category === 'profissional'),
+    },
+    {
+        title: 'Projetos de entretenimento',
+        description: 'Projetos que eu construí para me divertir e para me desafiar.',
+        projects: props.projects.filter((project) => project.category === 'entretenimento'),
+    },
+]);
+
 const givenName = computed(() => props.profile.name.split(' ')[0]);
 const familyName = computed(() => props.profile.name.split(' ').slice(1).join(' '));
 </script>
@@ -86,46 +99,47 @@ const familyName = computed(() => props.profile.name.split(' ').slice(1).join(' 
 
     <section id="trabalho" class="scroll-mt-24 border-t border-line">
         <div class="mx-auto max-w-5xl px-6 py-16 md:py-20">
-            <p class="text-sm font-medium tracking-[0.22em] text-accent uppercase">Trabalho</p>
-            <h2 class="mt-3 font-serif text-5xl tracking-tight md:text-6xl">Projetos</h2>
-            <p class="mt-4 max-w-xl text-muted">Sistemas, sites e experiências que eu construí do início ao fim.</p>
+            <div v-for="(group, index) in projectGroups" :key="group.title" :class="index === 0 ? '' : 'mt-16'">
+                <h2 class="font-serif text-5xl tracking-tight md:text-6xl">{{ group.title }}</h2>
+                <p class="mt-4 max-w-xl text-muted">{{ group.description }}</p>
 
-            <p v-if="projects.length === 0" class="mt-10 text-muted">
-                Nenhum projeto publicado ainda.
-            </p>
+                <p v-if="group.projects.length === 0" class="mt-10 text-muted">
+                    Nenhum projeto publicado ainda.
+                </p>
 
-            <div v-else class="mt-10 grid gap-4">
-                <Link
-                    v-for="project in projects"
-                    :key="project.id"
-                    :href="project.href"
-                    class="group rounded-3xl border border-line bg-white/[0.03] p-6 transition hover:border-accent/50 hover:bg-white/[0.06] md:p-8"
-                >
-                    <span class="flex items-start justify-between gap-4">
-                        <span class="block font-serif text-3xl tracking-tight md:text-4xl">
-                            {{ project.title }}
-                        </span>
-                        <span class="text-sm text-muted transition group-hover:text-accent">Ver projeto</span>
-                    </span>
-                    <img
-                        v-if="project.image"
-                        :src="project.image"
-                        :alt="`Tela inicial de ${project.title}`"
-                        class="mt-6 w-full rounded-2xl ring-1 ring-white/10"
+                <div v-else class="mt-10 grid gap-4">
+                    <Link
+                        v-for="project in group.projects"
+                        :key="project.id"
+                        :href="project.href"
+                        class="group rounded-3xl border border-line bg-white/[0.03] p-6 transition hover:border-accent/50 hover:bg-white/[0.06] md:p-8"
                     >
-                    <span class="mt-6 block max-w-2xl leading-relaxed text-muted">
-                        {{ project.summary }}
-                    </span>
-                    <span v-if="project.stack.length" class="mt-5 flex flex-wrap gap-2">
-                        <span
-                            v-for="item in project.stack"
-                            :key="item"
-                            class="rounded-full bg-white/5 px-3 py-1 text-sm text-ink/85 ring-1 ring-white/10"
-                        >
-                            {{ item }}
+                        <span class="flex items-start justify-between gap-4">
+                            <span class="block font-serif text-3xl tracking-tight md:text-4xl">
+                                {{ project.title }}
+                            </span>
+                            <span class="text-sm text-muted transition group-hover:text-accent">Ver projeto</span>
                         </span>
-                    </span>
-                </Link>
+                        <img
+                            v-if="project.image"
+                            :src="project.image"
+                            :alt="`Tela inicial de ${project.title}`"
+                            class="mt-6 w-full rounded-2xl ring-1 ring-white/10"
+                        >
+                        <span class="mt-6 block max-w-2xl leading-relaxed text-muted">
+                            {{ project.summary }}
+                        </span>
+                        <span v-if="project.stack.length" class="mt-5 flex flex-wrap gap-2">
+                            <span
+                                v-for="item in project.stack"
+                                :key="item"
+                                class="rounded-full bg-white/5 px-3 py-1 text-sm text-ink/85 ring-1 ring-white/10"
+                            >
+                                {{ item }}
+                            </span>
+                        </span>
+                    </Link>
+                </div>
             </div>
         </div>
     </section>
