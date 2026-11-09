@@ -19,7 +19,7 @@ defineProps({
             ← Projetos
         </Link>
 
-        <h1 class="mt-8 text-5xl tracking-tight md:text-6xl">
+        <h1 class="mt-8 font-serif text-5xl tracking-tight md:text-6xl">
             {{ project.title }}
         </h1>
         <p class="mt-6 text-lg leading-relaxed text-muted">
@@ -30,7 +30,7 @@ defineProps({
             <li
                 v-for="item in project.stack"
                 :key="item"
-                class="border border-line px-3 py-1.5 text-sm"
+                class="rounded-full bg-white/5 px-3 py-1.5 text-sm ring-1 ring-white/10"
             >
                 {{ item }}
             </li>

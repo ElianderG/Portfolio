@@ -24,8 +24,10 @@ return [
 
     'email' => 'eliandergomes@gmail.com',
 
-    'linkedin' => 'https://www.linkedin.com/in/eliander-gomes-da-silveira-a1a957161',
+    'linkedin' => 'https://www.linkedin.com/in/eliander-gomes-da-silveira-a1a957161/',
 
     'github' => 'https://github.com/ElianderG',
+
+    'instagram' => 'https://www.instagram.com/eliandergomes/',
 
 ];
